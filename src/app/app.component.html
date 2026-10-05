@@ -1,7 +1,10 @@
 
 <app-header />
 <main>
-<app-user/>
-<app-tasks />
+@for(user of userList; track user.id) {
+  <!--Catch the emit and do smth on parent component-->
+  <app-user [user]="user" (selectUser)="onSelectedUser($event)" [userSelected]="user.id === selectedUser?.id"/>
+}
+<app-tasks [user]="selectedUser || null"/>
 </main>
 
