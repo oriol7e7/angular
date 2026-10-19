@@ -1,10 +1,14 @@
 <section>
-  <h2>Tasks for {{user()?.name}}</h2>
+  @if(user()) {
+    <h2>Tasks for {{user()?.name}}</h2>
+  }
+
   @for(task of taskList; track task.id) {
     @if(isSameuser(task.userId)) {
       <h3>{{task.title}}</h3>
       <p class="task-date">{{task.dueDate}}</p>
       <p class="description">{{task.summary}}</p>
+      <button (click)="deleteTask(task.id)">DELETE</button>
     }
   }
 </section>

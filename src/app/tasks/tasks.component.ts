@@ -56,4 +56,8 @@ export class TasksComponent {
   public isSameuser(taskUserId: string): boolean {
     return taskUserId === this.user()?.id;
   }
+  public deleteTask(taskId: string) {
+    const idx = this.taskList.findIndex((t) => t.id === taskId);
+    this.taskList.splice(idx, 1);
+  }
 }
